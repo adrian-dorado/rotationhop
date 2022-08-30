@@ -10,7 +10,7 @@ services:
       - rotation-data:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_MULTIPLE_DATABASES=rotationHop
+      - POSTGRES_MULTIPLE_DATABASES=rotationhop
       - POSTGRES_PASSWORD=test-databases
     ports:
       - 15432:5432
@@ -21,11 +21,11 @@ services:
     ports:
       - "8080:8000"
     volumes:
-      - ./rotation_hop:/app
+      - ./ffxiv_django:/app
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://products:password@postgres:5432/rotationHop
+      DATABASE_URL: postgres://rotationhop:password@postgres:5432/rotationhop
       WAIT_HOSTS: postgres:5432
       WAIT_TIMEOUT: 240
   ffxiv_react:
